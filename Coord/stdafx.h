@@ -36,6 +36,7 @@
 
 
 #include <gdiplus.h>
+#include <afxcontrolbars.h>
 
 using namespace Gdiplus;
 

@@ -50,6 +50,7 @@ public:
 	afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnFunctionMenu(UINT nID);
 };
 
 #ifndef _DEBUG  // CoordView.cpp의 디버그 버전

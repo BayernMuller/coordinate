@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -186,6 +186,7 @@
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Curve.h" />
     <ClInclude Include="Fract.h" />
+    <ClInclude Include="FuncDlg.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Coord.h" />
     <ClInclude Include="CoordDoc.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Curve.cpp" />
     <ClCompile Include="Fract.cpp" />
+    <ClCompile Include="FuncDlg.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Coord.cpp" />
     <ClCompile Include="CoordDoc.cpp" />

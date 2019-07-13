@@ -31,6 +31,7 @@ BEGIN_MESSAGE_MAP(CCoordView, CView)
 	ON_WM_MOUSEWHEEL()
 	ON_WM_ERASEBKGND()
 	ON_WM_MOUSEMOVE()
+	ON_COMMAND_RANGE(ID_MENU_CREATE, ID_MENU_NUMBER, &CCoordView::OnFunctionMenu)
 END_MESSAGE_MAP()
 
 // CCoordView 생성/소멸
@@ -172,3 +173,20 @@ void CCoordView::OnMouseMove(UINT nFlags, CPoint point)
 	}
 	CView::OnMouseMove(nFlags, point);
 }
+
+void CCoordView::OnFunctionMenu(UINT nID)
+{
+	void(CManager::*fp[])() =
+	{
+		&CManager::CreateFunc,
+		&CManager::Delete,
+		&CManager::Minimize,
+		&CManager::MoveFunc,
+		&CManager::ToggleRuller,
+		&CManager::SelectedFunc,
+		&CManager::ToggleNumber
+	};
+	(m_Manager.*fp[nID - ID_MENU_CREATE])();
+	Invalidate(TRUE);	
+}
+
