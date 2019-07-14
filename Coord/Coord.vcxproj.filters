@@ -54,6 +54,12 @@
     <ClInclude Include="Circle.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="FuncDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Rational.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Coord.cpp">
@@ -87,6 +93,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Circle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="FuncDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Rational.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

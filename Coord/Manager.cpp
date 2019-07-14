@@ -1,19 +1,30 @@
 #include "stdafx.h"
 #include "Manager.h"
 #include "Linear.h"
-#include "Curve.h"
+#include "Rational.h"
 #include "Circle.h"
 #include "FuncDlg.h"
 
+
 CManager::CManager() : m_bNumber(true), m_bRuller(true)
 {
-	auto *cir = new CCircle;
-	cir->Initialize(Color(0, 0, 255), 1);
+	auto *rat = new CRational;
+	rat->Initialize(Color(0, 0, 255), 1);
+	rat->SetFunction(
+		{
+			{1},
+			{0},
+			{0}
+		});
+	m_Funs.push_back(rat);
+
+	auto *cir = new CCurve;
+	cir->Initialize(Color(255, 0, 0), 1);
 	cir->SetFunction(
 		{
-			{2},
-			{4},
-			{16}
+			{1},
+			{0},
+			{0}
 		});
 	m_Funs.push_back(cir);
 }

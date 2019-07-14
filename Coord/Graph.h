@@ -19,7 +19,7 @@ public:
 	static int m_nDx, m_nDy;
 
 protected:
-	int f(int x);
+	virtual int f(int x);
 	int m_nThick;
 	Color m_Color;
 	Terms m_Coeff;

@@ -6,7 +6,7 @@
 #include "FuncDlg.h"
 #include "afxdialogex.h"
 #include "Linear.h"
-#include "Curve.h"
+#include "Rational.h"
 #include "Circle.h"
 
 // CFuncDlg 대화 상자
@@ -68,7 +68,7 @@ CGraph * CFuncDlg::GetNewFunc()
 			newFunc = new CCurve;
 		break;
 	case 1:
-		// 유리함수
+		newFunc = new CRational;
 		break;
 	case 2:
 		newFunc = new CCircle;

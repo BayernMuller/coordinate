@@ -169,7 +169,7 @@ void CCoordView::OnMouseMove(UINT nFlags, CPoint point)
 		CPoint delta = m_StartPt - point;
 		m_Manager.OnScreenMove(delta.x, delta.y);
 		m_StartPt = point;
-		Invalidate(TRUE);
+		Invalidate(FALSE);
 	}
 	CView::OnMouseMove(nFlags, point);
 }

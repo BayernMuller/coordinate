@@ -6,7 +6,7 @@ public:
 	CCurve();
 	~CCurve();
 
-	void Draw(Graphics& G, CRect& rect);
+	virtual void Draw(Graphics& G, CRect& rect);
 
 private:
 
