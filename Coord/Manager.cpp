@@ -8,25 +8,6 @@
 
 CManager::CManager() : m_bNumber(true), m_bRuller(true)
 {
-	auto *rat = new CRational;
-	rat->Initialize(Color(0, 0, 255), 1);
-	rat->SetFunction(
-		{
-			{1},
-			{0},
-			{0}
-		});
-	m_Funs.push_back(rat);
-
-	auto *cir = new CCurve;
-	cir->Initialize(Color(255, 0, 0), 1);
-	cir->SetFunction(
-		{
-			{1},
-			{0},
-			{0}
-		});
-	m_Funs.push_back(cir);
 }
 
 CManager::~CManager()
@@ -35,7 +16,7 @@ CManager::~CManager()
 		delete i;
 }
 
-void CManager::Draw(Graphics &G, CRect & rect)
+void CManager::OnDraw(Graphics &G, CRect & rect)
 {
 	G.SetSmoothingMode(SmoothingModeAntiAlias);
 	DrawCoordinate(G, rect);
@@ -44,10 +25,9 @@ void CManager::Draw(Graphics &G, CRect & rect)
 	m_Rect = rect;
 }
 
-void CManager::Select(UINT nFlag, CPoint& pt)
+void CManager::OnLButtonDown(UINT nFlag, CPoint& pt)
 {
 	for (auto i = m_Funs.begin(); i != m_Funs.end(); i++)
-	{
 		if ((*i)->IsSelected(pt, m_Rect.CenterPoint()))
 		{
 			if (nFlag != MK_CONTROL + MK_LBUTTON)
@@ -55,7 +35,6 @@ void CManager::Select(UINT nFlag, CPoint& pt)
 			m_Selee.push_back(i);
 			break;
 		}
-	}
 }
 
 void CManager::OnZoom(short zDelta)
@@ -113,9 +92,8 @@ void CManager::CreateFunc()
 {
 	CFuncDlg dlg;
 	vector<CFract> v;
-	dlg.DoModal();
-	CGraph* newFunc = dlg.GetNewFunc();
-	m_Funs.push_back(newFunc);
+	if (dlg.DoModal() == IDOK)
+		m_Funs.push_back(dlg.GetNewFunc());
 }
 
 void CManager::Delete()

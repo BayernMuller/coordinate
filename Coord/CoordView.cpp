@@ -76,7 +76,7 @@ void CCoordView::OnDraw(CDC* pDC)
 	mem.SetSmoothingMode(SmoothingModeAntiAlias);
 	mem.FillRectangle(&SolidBrush(Color(255,255,255)), rclClient);
 
-	m_Manager.Draw(mem, rect);
+	m_Manager.OnDraw(mem, rect);
 
 	pDC->BitBlt(0, 0, rect.right, rect.bottom, &MemDC, 0, 0, SRCCOPY);
 	MemDC.SelectObject(pOldBitmap);
@@ -126,7 +126,7 @@ CCoordDoc* CCoordView::GetDocument() const // 디버그되지 않은 버전은 �
 void CCoordView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
-	m_Manager.Select(nFlags, point);
+	m_Manager.OnLButtonDown(nFlags, point);
 	m_StartPt = point;
 	CView::OnLButtonDown(nFlags, point);
 }

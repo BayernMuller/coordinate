@@ -38,4 +38,5 @@ public:
 	virtual BOOL OnInitDialog();
 	virtual void OnOK();
 	afx_msg void OnBnClickedColor();
+	afx_msg void OnEnChangeEdit2();
 };

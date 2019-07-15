@@ -9,11 +9,6 @@ class CManager
 public:
 	CManager();
 	~CManager();
-	void Draw(Graphics &G, CRect& rect);
-	void Select(UINT nFlag, CPoint& pt);
-	void OnZoom(short zDelta);
-	void OnScreenMove(int dx, int dy);
-
 	afx_msg void CreateFunc();
 	afx_msg void Delete();
 	afx_msg void MoveFunc();
@@ -21,6 +16,11 @@ public:
 	afx_msg void ToggleNumber();
 	afx_msg void SelectedFunc();
 	afx_msg void Minimize();
+
+	afx_msg void OnLButtonDown(UINT nFlag, CPoint& pt);
+	afx_msg void OnZoom(short zDelta);
+	afx_msg void OnScreenMove(int dx, int dy);
+	afx_msg void OnDraw(Graphics &G, CRect& rect);
 private:
 	CRect m_Rect;
 	list<CGraph*> m_Funs;
