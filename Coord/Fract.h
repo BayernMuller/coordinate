@@ -2,11 +2,11 @@
 class CFract
 {
 public:
-	CFract(int son = 1, int mom = 1) : m_nMom(mom), m_nSon(son) {};
+	CFract(int son = 1, int mom = 1);
 	~CFract();
 
-	int GetMom() { return m_nMom; }
-	int GetSon() { return m_nSon; }
+	int GetMom() const { return m_nMom; }
+	int GetSon() const { return m_nSon; }
 
 	CFract operator+(CFract& t);
 	CFract operator-(CFract& t);

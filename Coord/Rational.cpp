@@ -11,6 +11,11 @@ CRational::~CRational()
 {
 }
 
+void CRational::Selialize(CArchive & ar, Child kind)
+{
+	CGraph::Selialize(ar, rational);
+}
+
 
 int CRational::f(int x)
 {

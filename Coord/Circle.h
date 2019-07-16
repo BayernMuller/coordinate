@@ -6,7 +6,9 @@ public:
 	CCircle();
 	~CCircle();
 	void Draw(Graphics &G, CRect &rect);
+	void Selialize(CArchive& ar, Child kind = null);
 
 private:
+
 };
 

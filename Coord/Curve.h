@@ -7,6 +7,7 @@ public:
 	~CCurve();
 
 	virtual void Draw(Graphics& G, CRect& rect);
+	void Selialize(CArchive& ar, Child kind = null);
 
 private:
 

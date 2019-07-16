@@ -2,6 +2,11 @@
 #include "Fract.h"
 
 
+CFract::CFract(int son, int mom) : m_nMom(mom), m_nSon(son)
+{
+	Reduction();
+}
+
 CFract::~CFract()
 {
 }
@@ -67,6 +72,11 @@ void CFract::Reduction()
 	int gcd = Gcd(m_nSon, m_nMom);
 	m_nSon /= gcd;
 	m_nMom /= gcd;
+	if (m_nMom < 0 && m_nSon > 0)
+	{
+		m_nSon *= -1;
+		m_nMom *= -1;
+	}
 }
 
 void CFract::Reduce(CFract & t)

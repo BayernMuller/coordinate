@@ -31,7 +31,8 @@ BEGIN_MESSAGE_MAP(CCoordView, CView)
 	ON_WM_MOUSEWHEEL()
 	ON_WM_ERASEBKGND()
 	ON_WM_MOUSEMOVE()
-	ON_COMMAND_RANGE(ID_MENU_CREATE, ID_MENU_NUMBER, &CCoordView::OnFunctionMenu)
+	ON_COMMAND_RANGE(ID_MENU_CREATE, ID_MENU_MINIMIZE, &CCoordView::OnFunctionMenu)
+	ON_WM_LBUTTONUP()
 END_MESSAGE_MAP()
 
 // CCoordView 생성/소멸
@@ -62,7 +63,7 @@ void CCoordView::OnDraw(CDC* pDC)
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
-	
+
 	CRect rect;
 	GetClientRect(&rect);
 	Rect rclClient(rect.left, rect.top, rect.Width(), rect.Height());
@@ -126,8 +127,7 @@ CCoordDoc* CCoordView::GetDocument() const // 디버그되지 않은 버전은 �
 void CCoordView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
-	m_Manager.OnLButtonDown(nFlags, point);
-	m_StartPt = point;
+	m_ClickPt = m_StartPt = point;
 	CView::OnLButtonDown(nFlags, point);
 }
 
@@ -164,7 +164,7 @@ BOOL CCoordView::OnEraseBkgnd(CDC* pDC)
 void CCoordView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
-	if (nFlags & MK_LBUTTON)
+	if (nFlags & MK_LBUTTON && m_StartPt != CPoint(0, 0))
 	{
 		CPoint delta = m_StartPt - point;
 		m_Manager.OnScreenMove(delta.x, delta.y);
@@ -180,13 +180,25 @@ void CCoordView::OnFunctionMenu(UINT nID)
 	{
 		&CManager::CreateFunc,
 		&CManager::Delete,
-		&CManager::Minimize,
-		&CManager::MoveFunc,
+		&CManager::SaveFunction,
+		&CManager::OpenFunction,
 		&CManager::ToggleRuller,
-		&CManager::SelectedFunc,
-		&CManager::ToggleNumber
+		&CManager::ToggleNumber,
+		&CManager::Minimize
 	};
 	(m_Manager.*fp[nID - ID_MENU_CREATE])();
-	Invalidate(TRUE);	
+	Invalidate(TRUE);
 }
 
+
+void CCoordView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	if (m_ClickPt == point)
+	{
+		m_Manager.OnLButtonDown(nFlags, point);
+		Invalidate(FALSE);
+	}
+	m_StartPt.SetPoint(0, 0);
+	CView::OnLButtonUp(nFlags, point);
+}

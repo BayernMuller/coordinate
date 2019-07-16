@@ -41,3 +41,8 @@ void CCurve::Draw(Graphics & G, CRect & rect)
 	if (!dots.empty())
 		G.DrawLines(&Pen(m_Color, REAL(m_nThick)), dots.data(), dots.size());
 }
+
+void CCurve::Selialize(CArchive & ar, Child kind)
+{
+	CGraph::Selialize(ar, curve);
+}
