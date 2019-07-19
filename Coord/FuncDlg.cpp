@@ -9,6 +9,7 @@
 #include "Rational.h"
 #include "Circle.h"
 
+#pragma warning(disable:4996)
 // CFuncDlg 대화 상자
 
 IMPLEMENT_DYNAMIC(CFuncDlg, CDialogEx)
@@ -46,15 +47,32 @@ END_MESSAGE_MAP()
 
 void CFuncDlg::OnRadioClick(UINT value)
 {
-	if (m_nRadio == value - IDC_RADIO1)
-	UpdateData(TRUE);
-	LPCWSTR str[] =
+	const static LPCWSTR str[] =
 	{
 		L"x에 대해 내림차순으로 정리한 식의 계수들을 차례대로 입력",
 		L"k / (x - p) + q 에서 k, p, q 순으로 입력",
-		L"a(x - b)^2 + c(y - d)^2 = r^2 에서 a b c d r 순으로 입력"
+		L"(x - a)^2 + (y - b)^2 = r^2 에서 a, b, r 순으로 입력"
 	};
+	if (m_nRadio == value - IDC_RADIO1)
+	UpdateData(TRUE);
 	m_ctrlText.SetWindowText(str[value - IDC_RADIO1]);
+}
+
+CFract CFuncDlg::ToFract(const CString & str)
+{
+	wchar_t* psz = const_cast<wchar_t*>(str.operator const wchar_t*());
+	int idx = str.Find(L'/'), s = 1, m = 1;
+	if (idx != EOF)
+	{
+		psz[idx] = L'\0';
+		
+		s = _wtoi(psz);
+		psz += idx + 1;
+		m = _wtoi(psz);
+	}
+	else
+		s = _wtoi(str);
+	return CFract(s, m);
 }
 
 CGraph * CFuncDlg::GetNewFunc()
@@ -90,35 +108,35 @@ BOOL CFuncDlg::OnInitDialog()
 
 void CFuncDlg::OnOK()
 {
-	CString str, frac[2];
-	int idx = 0;
+	UpdateData(TRUE);
+	m_Coeff.clear();
+	CString str;
 	GetDlgItem(IDC_EDIT1)->GetWindowText(str);
-	if (str[str.GetLength() - 1] != L' ')
-		str.AppendChar(L' ');
 	for (int i = 0; i < str.GetLength(); i++)
-	{
-		if (iswdigit(str[i]) || str[i] == L'-')
-		{
-			frac[idx].AppendChar(str[i]);
-		}
-		else if (str[i] == L'/')
-		{
-			++idx %= 2;
-		}
-		else if (str[i] == L' ')
-		{
-			if (idx) m_Coeff.push_back(CFract(_wtoi(frac[0]), _wtoi(frac[1])));
-			else m_Coeff.push_back(CFract(_wtoi(frac[0])));
-			idx = 0, frac[0] = frac[1] = L"";
-		}
-		else
+		if (!(iswdigit(str[i]) || str[i] == L'-' || str[i] == L'/' || str[i] == L' '))
 		{
 			AfxMessageBox(_T("잘못된 입력입니다."));
 			return;
 		}
+	wchar_t* psz = wcstok(const_cast<wchar_t*>(str.operator const wchar_t*()), L" ");;
+	while (psz)
+	{
+		if (!StrCmpW(psz, L"-"))
+		{
+			AfxMessageBox(_T("잘못된 입력입니다."));
+			return;
+		}
+		m_Coeff.push_back(ToFract(psz));
+		psz = wcstok(nullptr, L" ");
 	}
 	GetDlgItem(IDC_EDIT2)->GetWindowText(str);
 	m_nThick = _wtoi(str);
+	if (m_nRadio)
+		if (m_Coeff.size() != 3 || (m_nRadio == 2 && m_Coeff[2] < 0))
+		{
+			AfxMessageBox(_T("잘못된 입력입니다."));
+			return;
+		}
 	CDialogEx::OnOK();
 }
 
@@ -132,11 +150,4 @@ void CFuncDlg::OnBnClickedColor()
 
 
 void CFuncDlg::OnEnChangeEdit2()
-{
-	// TODO:  RICHEDIT 컨트롤인 경우, 이 컨트롤은
-	// CDialogEx::OnInitDialog() 함수를 재지정 
-	//하고 마스크에 OR 연산하여 설정된 ENM_CHANGE 플래그를 지정하여 CRichEditCtrl().SetEventMask()를 호출하지 않으면
-	// 이 알림 메시지를 보내지 않습니다.
-
-	// TODO:  여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
+{}

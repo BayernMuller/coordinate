@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CCircle" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAEgAAAAAABAAAACAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Circle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CCoordView" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAFAAACgCABAoABAgBIAAAAAAAgIAACQAYI=</HashCode>
+      <FileName>CoordView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CCurve" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEAAAAAAAAgAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Curve.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFract" Collapsed="true">
+    <Position X="4.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYAAAIAAAAAAAAAAAAAAAFAAAAIBAAAAAAAgEAAARAI=</HashCode>
+      <FileName>Fract.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFuncDlg" Collapsed="true">
+    <Position X="6.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAAEABkAAAAQAAACABEAAIABAAAQAgAAAAAAAAgAAAA=</HashCode>
+      <FileName>FuncDlg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGraph" Collapsed="true">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQEwAAAAQABBAAACAQAgCQAAAAgggAAAg=</HashCode>
+      <FileName>Graph.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLinear" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEgAAAAAAAAAAACAADAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Linear.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CManager" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>AABQgAAAAEBAAEEAAABAAAABAAECAAAIBAUAAIARQgA=</HashCode>
+      <FileName>Manager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRational" Collapsed="true">
+    <Position X="5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAABAAAACAAAAAQAAAAACAAAAA=</HashCode>
+      <FileName>Rational.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

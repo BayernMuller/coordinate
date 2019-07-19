@@ -223,11 +223,13 @@
     <ResourceCompile Include="Coord.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="res\Coord.rc2" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Coord.ico" />
     <Image Include="res\CoordDoc.ico" />
+    <Image Include="res\iconfinder_function_383136_v4I_icon.ico" />
     <Image Include="res\Toolbar.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

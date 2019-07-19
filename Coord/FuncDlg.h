@@ -32,6 +32,7 @@ private:
 	int m_nRadio;
 	int m_nThick;
 	void OnRadioClick(UINT value);
+	CFract ToFract(const CString& str);
 
 public:
 	CGraph* GetNewFunc();

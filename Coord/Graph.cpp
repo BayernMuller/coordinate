@@ -49,8 +49,6 @@ CString CGraph::GetString()
 			}
 			else
 				temp.Format(format, m_Coeff[i].GetSon());
-
-
 			if (deg)
 			{
 				temp += _T("x");

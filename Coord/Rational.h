@@ -6,7 +6,7 @@ public:
 	CRational();
 	~CRational();
 	void Selialize(CArchive& ar, Child kind = null);
-
+	CString GetString();
 private:
 	int f(int x);
 };
